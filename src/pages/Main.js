@@ -1,17 +1,17 @@
 import React from "react";
-import NavBar from "../components/main/NavBar";
+// import NavBar from "../components/main/NavBar";
 import Features from "../components/main/Features";
 import Landing from "../components/main/Landing";
 import HowItWorks from "../components/main/HowItWorks";
-import Footer from "../components/main/Footer";
+// import Footer from "../components/main/Footer";
 import ".././styles/styles.css";
 
 const Main = () => {
   return (
     <>
-      <div>
+      {/* <div>
         <NavBar />
-      </div>
+      </div> */}
       <section>
         <Landing />
       </section>
@@ -21,9 +21,9 @@ const Main = () => {
       <section>
         <HowItWorks />
       </section>
-      <div>
+      {/* <div>
         <Footer />
-      </div>
+      </div> */}
     </>
   );
 };
