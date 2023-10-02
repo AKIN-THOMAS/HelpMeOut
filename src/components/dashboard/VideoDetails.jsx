@@ -29,7 +29,7 @@ const VideoDetails = () => {
   };
 
   useEffect(() => {
-    fetch(`https://hngx5-2.onrender.com/api/video/stream-video/${id}`)
+    fetch(`https://hngx5-2.onrender.com/api/video/fetch/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -49,7 +49,14 @@ const VideoDetails = () => {
   console.log(videos);
 
   if (error) {
-    return <ErrorMessage message={error.message} />;
+    return (
+      <ErrorMessage
+        message={
+          error.message
+          // "error"
+        }
+      />
+    );
   }
   return (
     <section>
@@ -84,7 +91,7 @@ const VideoDetails = () => {
           <div className="detailsVideo">
             <div className="mainVideo">
               <video controls>
-                <source src={videos.file_url} type="video/webm" />
+                <source src={videos.file_url} type="video/mp4" />
               </video>
             </div>
             <div className="share-copy">
