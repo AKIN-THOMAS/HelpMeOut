@@ -594,7 +594,16 @@
   justify-content: center;
   align-items: center;
 }
-
+.yourRecVideo video {
+  display: flex;
+  width: 575px;
+  height: 473px;
+  padding-top: 393px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--primary-primary-400, #413c6d);
+}
 .yourVideo {
   display: flex;
   flex-direction: column;
@@ -710,6 +719,7 @@
   align-items: center;
   gap: 8px;
   border-radius: 8px;
+  background-color: #fff;
   border: 1px solid var(--primary-main, #120b48);
 }
 
@@ -961,6 +971,10 @@
 }
 
 @media (max-width: 500px) {
+  .adviceText {
+    width: 300px;
+    font-size: 16px;
+  }
   .navbar {
     padding: 20px 20px;
   }
