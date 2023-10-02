@@ -869,10 +869,37 @@
   .foot {
     gap: 70px;
   }
+  .upperReady {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 0px 0px 40px;
+    justify-content: center;
+    align-items: center;
+  }
+  .advice {
+    width: 400px;
+  }
+  .lowerReady {
+    padding: 30px 90px;
+  }
+  .adviceText {
+    width: 400px;
+  }
+  .yourVideo {
+    align-items: center;
+  }
+  .shareApps {
+    width: 110%;
+    align-items: center;
+  }
 }
 
 /* Media Query for Tablets */
 @media (max-width: 768px) {
+  .yourVideoTitle {
+    font-size: 32px;
+  }
   .navbar {
     padding: 20px 30px;
   }
@@ -926,6 +953,10 @@
   }
   .signup-btn button {
     width: 400px;
+  }
+  .yourVideoEmail,
+  .yourVideoLink {
+    width: 500px;
   }
 }
 
@@ -992,8 +1023,26 @@
   .video-section {
     padding: 8px 10px;
   }
+  .yourVideoEmail,
+  .yourVideoLink {
+    width: 320px;
+  }
+  .adviceCreate p,
+  .adviceCreate a {
+    font-size: 16px;
+  }
+  .advice {
+    width: 320px;
+  }
 }
 @media (max-width: 320px) {
+  .upperReady {
+    padding: 50px 0 0 0;
+  }
+  .yourVideoEmail,
+  .yourVideoLink {
+    width: 320px;
+  }
   .navbar {
     padding: 20px 20px;
   }

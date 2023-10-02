@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../../styles/styles.css";
 import copyIcon from "../../assets/copy.svg";
@@ -6,10 +6,14 @@ import facebook from "../../assets/Facebook.svg";
 import whatsapp from "../../assets/whatsapp.svg";
 import telegram from "../../assets/telegram.svg";
 import test from "../../assets/yourVideoTest.svg";
+import ErrorMessage from "../ErrorMessage";
 
 const Ready = () => {
   const { id } = useParams();
   const [copy, setCopy] = useState("");
+  const [videos, setVideos] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const inputRef = useRef(null);
 
@@ -20,6 +24,28 @@ const Ready = () => {
       setCopy("Copied!");
     }
   };
+  useEffect(() => {
+    fetch(`https://hngx5-2.onrender.com/api/video/${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setVideos(data.data);
+        console.log("videos:", videos);
+        // setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        // setLoading(false);
+      });
+  }, []);
+
+  if (error) {
+    return <ErrorMessage message={error.message} />;
+  }
   return (
     <div>
       <div className="ready">
@@ -31,7 +57,7 @@ const Ready = () => {
             <div className="yourVideoDetails">
               <div className="yourVideoName">
                 <label>Name</label>
-                <p>Untitled_Video_20232509 </p>
+                <p>{videos.name}</p>
               </div>
               <div className="yourVideoEmail">
                 <input placeholder="enter email of receiver" />
@@ -39,11 +65,7 @@ const Ready = () => {
               </div>
               <div className="yourVideoLink">
                 <label>videoUrl</label>
-                <input
-                  value={"Untitled_Video_20232509"}
-                  ref={inputRef}
-                  readOnly
-                />
+                <input value={videos.file_url} ref={inputRef} readOnly />
                 <button onClick={handleCopyClick}>
                   <img src={copyIcon} alt="copy" />
                   Copy
@@ -74,7 +96,9 @@ const Ready = () => {
           </div>
           <div className="video-transcript">
             <div className="yourRecVideo">
-              <img src={test} alt="recorded video" />
+              <video controls>
+                <source src={videos.file_url} type="video/webm" />
+              </video>
             </div>
             <div className="yourTranscripts"></div>
           </div>
