@@ -25,7 +25,7 @@ const Ready = () => {
     }
   };
   useEffect(() => {
-    fetch(`https://hngx5-2.onrender.com/api/video/${id}`)
+    fetch(`https://hngx5-2.onrender.com/api/video/stream-video/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
